@@ -1,13 +1,35 @@
-package grpg
+package grpg.tablero
 
 class Casillero {
 
-	Integer q
-	Integer r
+	private Tablero tablero
+	private Integer q
+	private Integer r
+	private def pieza
 	
-	Casillero plus(offset) {
-		return new Casillero(q: this.q + offset[0], r: this.r + offset[1])
+	Casillero(tablero, q, r, pieza = null) {
+		this.tablero = tablero
+		this.q = q
+		this.r = r
+		this.pieza = pieza
 	}
+	
+	void setPieza(pieza) {
+		this.pieza = pieza
+		pieza.casillero = this
+	}
+	
+	Casillero vecino(direccion) {
+		def vecino = [q: this.q + direccion.offset.q,
+			r: this.r + direccion.offset.r]
+		tablero.get(vecino.q, vecino.r)
+	}
+	
+	@Override
+	public String toString() {
+		"$q, $r"
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

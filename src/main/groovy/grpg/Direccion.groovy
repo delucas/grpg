@@ -2,12 +2,12 @@ package grpg
 
 enum Direccion {
 
-	NE([1, -1]),
-	NO([0, -1]),
-	O ([-1, 0]),
-	SO([-1, 1]),
-	SE([0, 1]),
-	E ([1, 0])
+	NE([q: 1, r: -1]),
+	NO([q: 0, r: -1]),
+	O ([q: -1, r: 0]),
+	SO([q: -1, r: 1]),
+	SE([q: 0, r: 1]),
+	E ([q: 1, r: 0])
 
 	def offset
 
